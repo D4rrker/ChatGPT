@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat-GPT</title>
+    <script src="main.js" type="module" defer></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <div class="container">
+        <header>
+            <img src="/svg/icon-header.svg" alt="">
+            <h1>Chat-GPT</h1>
+        </header>
+        <main>
+            <ul class="messages">
+                <li id="waiting-message">
+                    <span>Cargando...</span>
+                    <b></b>
+                    <p>Se está cargado el modelo, espera un momento.</p>
+                </li>
+            </ul>
+        </main>
+        <form id="form">
+            <div>
+                <input type="text" name="message" id="input-message" placeholder="Escribe tu mensaje aquí o hazlo a través del micrófono.">
+                <button disabled type="button" id="startBtn" class="buttons button-mic"><img src="svg/icon-mic.svg" alt="Icono de un micrófono"></button>
+                <button disabled class="buttons button-send"><img src="svg/icon-send.svg" alt="Icono de un botón de enviar"></button>
+            </div>
+        </form>
+        <small id="mic-result"></small>
+        <i id="preview-download"></i>
+    </div>
+    
+
+
+    <!-- Templates -->
+    <template id="message-template">
+        <li class="message">
+            <span><img src="" alt=""></span>
+            <p></p>
+        </li>
+    </template>
+</body>
+</html>
