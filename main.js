@@ -83,6 +83,7 @@ function addMessage(text, sender) {
     const $text = $newMessage.querySelector('p')
     $text.textContent = text
     $who.src = sender === 'bot' ? '/svg/icon-ia.svg' : '/svg/icon-user.svg'
+    $who.alt = sender === 'bot' ? 'Icono IA' : 'Icono usuario'
     $newMessage.classList.add(sender)
     $messages.appendChild($newMessage)
     
