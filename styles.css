@@ -9,6 +9,7 @@ body {
     flex-direction: column;
     padding: 0;
     margin: 0;
+    overflow: hidden;
 }
 
 :root {
@@ -247,4 +248,20 @@ i {
     /* transform: translateX(100%) rotate(-90deg); */
     transform: translateX(100%);
   }
+}
+
+/* Error message */
+.error-message {
+  position: absolute;
+  width: 100%;
+  opacity: 0;
+  text-align: center;
+  bottom: 0px;
+  transform: translateY(100%);
+  transition: all 0.5s ease;
+}
+
+.animate {
+  transform: translateY(0%);
+  opacity: 1;
 }

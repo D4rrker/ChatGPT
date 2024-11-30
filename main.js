@@ -8,27 +8,37 @@ const $input = $('#input-message')
 const $small = $('#mic-result')
 const $preview = $('#preview-download')
 const $waitingMessage = $('#waiting-message')
+const $errorMessage = document.querySelector('.error-message')
 
 const selectModel = "Llama-3.1-8B-Instruct-q4f32_1-MLC-1k";
 
 let messages = []
 let completed = false
 
-const engine = await CreateWebWorkerMLCEngine(
-    new Worker ('./worker.js', { type: 'module' }),
-    selectModel,
-    { initProgressCallback: (info) => {
-        $preview.textContent = info.text
-        
-        if (info.progress === 1 && !completed) {
-            completed = true
-            $waitingMessage.parentNode.removeChild($waitingMessage)
-            document.querySelectorAll('button').forEach(button => button.disabled = false)
-            addMessage('¡Ya estoy listo para responder!', 'bot')
+let engine;
+
+try {
+    engine = await CreateWebWorkerMLCEngine(
+        new Worker('./worker.js', { type: 'module' }),
+        selectModel,
+        {
+            initProgressCallback: (info) => {
+                $errorMessage.classList.remove('animate')
+                $preview.textContent = info.text
+
+                if (info.progress === 1 && !completed) {
+                    completed = true
+                    $waitingMessage.parentNode.removeChild($waitingMessage)
+                    document.querySelectorAll('button').forEach(button => button.disabled = false)
+                    addMessage('¡Ya estoy listo para responder!', 'bot')
+                }
+            }
         }
-    } 
-    }
-)
+    )
+} catch (error) {
+    console.error(error)
+    $errorMessage.classList.add('animate')
+}
 
 $form.addEventListener('submit', async (e) => {
     e.preventDefault()
@@ -111,7 +121,7 @@ if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
 
     recognition.onerror = function(event) {
         console.error('Error en el reconocimiento:', event.error);
-        $small.textContent = 'Error en el reconocimiento de voz: ' + event.error;
+        $small.textContent = 'Error en el reconocimiento de voz: ' + event.error + ' | Intenta probar en otro navegador como "Edge"';
     };
 
     recognition.onend = function() {
