@@ -1,52 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chat con IA</title>
     <script src="main.js" type="module" defer></script>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
     <div class="container">
-        <header>
-            <img src="/svg/icon-header.svg" alt="">
-            <h1>Asistente con IA</h1>
-        </header>
-        <main>
-            <ul class="messages">
-                <li id="waiting-message">
-                    <span>Cargando...</span>
-                    <b></b>
-                    <p>Se está cargado el modelo, espera un momento.</p>
-                </li>
-            </ul>
-        </main>
-        <form id="form">
-            <div>
-                <input type="text" name="message" id="input-message" placeholder="Escribe tu mensaje aquí o hazlo a través del micrófono.">
-                <button disabled type="button" id="startBtn" class="buttons button-mic"><img src="svg/icon-mic.svg" alt="Icono de un micrófono"></button>
-                <button disabled class="buttons button-send"><img src="svg/icon-send.svg" alt="Icono de un botón de enviar"></button>
-            </div>
-        </form>
-        <small id="mic-result"></small>
-        <i id="preview-download"></i>
+      <header>
+        <img src="/svg/icon-header.svg" alt="" />
+        <h1>Asistente con IA</h1>
+      </header>
+      <main>
+        <ul class="messages chat-ul">
+          <li id="waiting-message" class="chat-li">
+            <span>Cargando...</span>
+            <b></b>
+            <p>Se está cargado el modelo, espera un momento.</p>
+          </li>
+        </ul>
+      </main>
+      <form id="form">
+        <div>
+          <input
+            type="text"
+            name="message"
+            id="input-message"
+            placeholder="Escribe tu mensaje aquí o hazlo a través del micrófono."
+          />
+          <button
+            disabled
+            type="button"
+            id="startBtn"
+            class="buttons button-mic"
+          >
+            <img src="svg/icon-mic.svg" alt="Icono de un micrófono" />
+          </button>
+          <button disabled class="buttons button-send">
+            <img src="svg/icon-send.svg" alt="Icono de un botón de enviar" />
+          </button>
+        </div>
+      </form>
+      <small id="mic-result"></small>
+      <i id="preview-download"></i>
     </div>
 
     <div class="error-message">
-        <p>Se necesita que esté activada la función de "<b>Aceleración por Hardware</b>" en su navegador.</p> 
-        <p>En su navegador: <b>Configuración</b> > <b>Sistema</b> > '<b>Usar la aceleración de gráficos cuando esté disponible</b>'.</p>
+      <p>
+        Se necesita que esté activada la función de "<b
+          >Aceleración por Hardware</b
+        >" en su navegador.
+      </p>
+      <p>
+        En su navegador: <b>Configuración</b> > <b>Sistema</b> > '<b
+          >Usar la aceleración de gráficos cuando esté disponible</b
+        >'.
+      </p>
     </div>
-    
-
 
     <!-- Templates -->
     <template id="message-template">
-        <li class="message">
-            <span><img src="" alt=""></span>
-            <p></p>
-        </li>
+      <li class="message chat-li">
+        <span><img src="" alt="" /></span>
+        <p></p>
+      </li>
     </template>
-</body>
+  </body>
 </html>
